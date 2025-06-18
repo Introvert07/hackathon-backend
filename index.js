@@ -18,5 +18,12 @@ app.use('/api/zeroth', zerothRoundRoutes);
 app.use('/api/first', firstRoundRoutes);
 app.use('/api/second', secondRoundRoutes);
 
+app.get("/", (req,res) => {
+    return res.status(200).json({
+        message: "Working",
+        success:true,
+    })
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
