@@ -12,10 +12,11 @@ export const submitFirstRound = async (req, res) => {
 
     // ✅ Check if the team is registered in Zeroth Round
     const registeredTeam = await ZerothRound.findOne({
-  teamName: { $regex: `^${teamName.trim()}$`, $options: 'i' },
-  leaderEmail: leaderEmail.trim().toLowerCase()
-});
+      teamName: teamName.trim(),
+      leaderEmail: leaderEmail.trim().toLowerCase()
+    });
 
+    
 
     if (!registeredTeam) {
       return res.status(403).json({
@@ -45,7 +46,6 @@ export const submitFirstRound = async (req, res) => {
 
     return res.status(201).json({
       message: 'First round submitted successfully!',
-      
       submission
     });
 
